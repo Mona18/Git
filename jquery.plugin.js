@@ -293,42 +293,22 @@
 			elem.removeData(this.name).removeClass(this._getMarker());
 		},
 
-		/** Plugin specific pre destruction.
-			Override this in a sub-class to perform extra activities and undo everything that was
-			done in the <code>_postAttach</code> or <code>_optionsChanged</code> functions.
-			@param elem {jQuery} The current jQuery element.
-			@param inst {object} The instance settings.
-			@example _preDestroy: function(elem, inst) {
- 	elem.off('.' + this.name);
- } */
+
 		_preDestroy: function(elem, inst) {
 		}
 	});
 	
-	/** Convert names from hyphenated to camel-case.
-		@private
-		@param value {string} The original hyphenated name.
-		@return {string} The camel-case version. */
+
 	function camelCase(name) {
 		return name.replace(/-([a-z])/g, function(match, group) {
 			return group.toUpperCase();
 		});
 	}
 	
-	/** Expose the plugin base.
-		@namespace "$.JQPlugin" */
+
 	$.JQPlugin = {
 	
-		/** Create a new collection plugin.
-			@memberof "$.JQPlugin"
-			@param [superClass='JQPlugin'] {string} The name of the parent class to inherit from.
-			@param overrides {object} The property/function overrides for the new class.
-			@example $.JQPlugin.createPlugin({
- 	name: 'tabs',
- 	defaultOptions: {selectedClass: 'selected'},
- 	_initSettings: function(elem, options) { return {...}; },
- 	_postAttach: function(elem, inst) { ... }
- }); */
+
 		createPlugin: function(superClass, overrides) {
 			if (typeof superClass === 'object') {
 				overrides = superClass;
